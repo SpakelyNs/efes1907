@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iCON - Türk Hava Kurumu Üniversitesi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* EFSANE ARKA PLAN GÖRSELİN */
+            background-image: url('Başlıksız.jpg');[cite: 9] 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #0b101a; 
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            margin-top: 180px; 
+            position: relative;
+        }
+
+        /* Tüm Alt Menüler Başlangıçta Gizli Olacak */
+        .menu-section {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        /* Ana Menü Varsayılan Olarak Açık */
+        #main-menu {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* GÜN BATIMI MANZARASINA UYGUN KOYU CAM EFEKTİ */
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 15, 25, 0.7); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+            border-radius: 15px;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        .link-card:hover {
+            background: rgba(20, 30, 45, 0.85);
+            border-color: rgba(255, 140, 40, 0.6); 
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(255, 140, 40, 0.2);
+        }
+
+        .card-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icon-box {
+            font-size: 1.5rem;
+            color: #e2e8f0; 
+            width: 30px;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        .link-card:hover .icon-box {
+            color: #ff9f38;
+        }
+
+        .text-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .subtitle {
+            font-size: 0.75rem;
+            color: #cbd5e1;
+            margin-top: 3px;
+        }
+
+        .arrow {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.5);
+            transition: color 0.3s ease;
+        }
+
+        .link-card:hover .arrow {
+            color: #ff7324;
+        }
+
+        /* Geri Dön Butonu */
+        .back-btn {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+        }
+
+        /* İçerik Kutusu (Hakkında ve Etkinlik Detayları İçin) */
+        .content-card {
+            background: rgba(10, 15, 25, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+        
+        .content-card h3 {
+            color: #ff9f38;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+            line-height: 1.4;
+        }
+
+        /* Sosyal Medya */
+        .social-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .social-section p {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        .social-section p::before, .social-section p::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background: #475569;
+        }
+        .social-section p::before { left: -40px; }
+        .social-section p::after { right: -40px; }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover { 
+            background: rgba(255, 255, 255, 0.1); 
+            border-color: #ff9f38;
+            color: #ff9f38;
+            transform: scale(1.05); 
+            box-shadow: 0 0 12px rgba(255, 140, 40, 0.3);
+        }
+
+        footer {
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- ================= 1. ANA MENÜ ================= -->
+        <div id="main-menu" class="menu-section">
+            
+            <a href="LINK_EKLE" class="link-card">
+                <div class="card-left">
+                    <div class="icon-box"><i class="fa-solid fa-users"></i></div>
+                    <div class="text-box">
+                        <span class="title">TOPLULUĞA KATIL</span>
+                        <span class="subtitle">Birlikte daha fazlasını başaralım.</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <a onclick="showSection('projects-menu')" class="link-card">
+                <div class="card-left">
+                    <div class="icon-box"><i class="fa-solid fa-gear"></i></div>
+                    <div class="text-box">
+                        <span class="title">PROJELERİMİZ</span>
+                        <span class="subtitle">TARS, VTOL ve daha fazlası.</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <a onclick="showSection('events-menu')" class="link-card">
+                <div class="card-left">
+                    <div class="icon-box"><i class="fa-regular fa-calendar"></i></div>
+                    <div class="text-box">
+                        <span class="title">ETKİNLİKLERİMİZ</span>
+                        <span class="subtitle">Geziler, eğitimler, organizasyonlar.</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <a onclick="showSection('teams-menu')" class="link-card">
+                <div class="card-left">
+                    <div class="icon-box"><i class="fa-solid fa-user-group"></i></div>
+                    <div class="text-box">
+                        <span class="title">TOPLULUKLARIMIZ</span>
+                        <span class="subtitle">Senin yeteneğin, bizim gücümüz.</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <a onclick="showSection('about-menu')" class="link-card">
+                <div class="card-left">
+                    <div class="icon-box"><i class="fa-solid fa-circle-info"></i></div>
+                    <div class="text-box">
+                        <span class="title">iCON Hakkında</span>
+                        <span class="subtitle">Vizyonumuz, değerlerimiz, hikayemiz.</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <div class="social-section">
+                <p>iCON'U TAKİP ET</p>
+                <div class="social-icons">
+                    <a href="INSTAGRAM_LINKI_BURAYA" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="LINKEDIN_LINKI_BURAYA" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="TIKTOK_LINKI_BURAYA" target="_blank" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. PROJELER MENÜSÜ ================= -->
+        <div id="projects-menu" class="menu-section">
+            <a onclick="showSection('main-menu')" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Ana Menüye Dön
+            </a>
+
+            <a href="LINK_EKLE" class="link-card">
+                <div class="card-left">
+                    <div class="text-box">
+                        <span class="title">TARS</span>
+                        <span class="subtitle">İnsansız Kara Aracı</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <a href="LINK_EKLE" class="link-card">
+                <div class="card-left">
+                    <div class="text-box">
+                        <span class="title">VTOL</span>
+                        <span class="subtitle">İnsansız Hava Aracı</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+        </div>
+
+        <!-- ================= 3. ETKİNLİKLER MENÜSÜ ================= -->
+        <div id="events-menu" class="menu-section">
+            <a onclick="showSection('main-menu')" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Ana Menüye Dön
+            </a>
+
+            <!-- TBMM Gezisi -->
+            <a onclick="showSection('tbmm-menu')" class="link-card">
+                <div class="card-left">
+                    <div class="text-box">
+                        <span class="title">TBMM Gezisi</span>
+                        <span class="subtitle">Ankara</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <!-- Karadeniz Gezisi -->
+            <a onclick="showSection('karadeniz-menu')" class="link-card">
+                <div class="card-left">
+                    <div class="text-box">
+                        <span class="title">Karadeniz Gezisi</span>
+                        <span class="subtitle">Doğa, Yaylalar ve Sınırsız Eğlence</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <!-- Uçak Fabrikası Gezisi -->
+            <a onclick="showSection('ucak-fabrikasi-menu')" class="link-card">
+                <div class="card-left">
+                    <div class="text-box">
+                        <span class="title">Uçak Fabrikası Gezisi</span>
+                        <span class="subtitle">Teknik İnceleme (İmsan & Milsav)</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+        </div>
+
+        <!-- ================= 3.1. TBMM GEZİSİ DETAYI ================= -->
+        <div id="tbmm-menu" class="menu-section">
+            <a onclick="showSection('events-menu')" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Etkinliklere Dön
+            </a>
+            
+            <div class="content-card">
+                <h3>iCON’dan TBMM’ye Anlamlı Ziyaret</h3>
+                <br>
+                <p>iCON olarak, üyelerimizin sosyal, kültürel ve mesleki gelişimlerini destekleyen çalışmalarımız kapsamında Türkiye Büyük Millet Meclisi’ne anlamlı bir ziyaret gerçekleştirdik.</p>
+                <br>
+                <p>Gerçekleştirilen ziyaret kapsamında kulüp üyelerimiz, Türkiye’nin yasama organının ev sahipliği yaptığı Meclis yerleşkesini yakından tanıma ve TBMM’nin tarihi, mimari ve kurumsal atmosferini yerinde deneyimleme fırsatı buldu.</p>
+                <br>
+                <p>Ziyaret boyunca Meclis içerisindeki farklı bölümler ve ortak kullanım alanları incelenirken, Türkiye’nin yakın siyasi ve toplumsal tarihinde önemli bir yere sahip olan TBMM’nin taşıdığı kurumsal ve sembolik değer hakkında yerinde gözlemlerde bulunuldu. Meclis Genel Kurul Salonu’nun görülmesi ve ziyaretin toplu bir hatıra fotoğrafıyla ölümsüzleştirilmesi, programın öne çıkan anları arasında yer aldı.</p>
+                <br>
+                <p>iCON olarak öğrencilerimizin yalnızca teknik ve akademik alanlarda değil; tarih, toplum, kültür ve kurumlar konusunda da geniş bir perspektif kazanmasını önemsiyoruz. Bu doğrultuda gerçekleştirdiğimiz saha ve kurum ziyaretlerini, gençlerimizin farklı alanları doğrudan deneyimleyerek öğrenmelerine katkı sağlayan önemli bir gelişim alanı olarak görüyoruz.</p>
+                <br>
+                <p>TBMM ziyareti de bu yaklaşımımızın bir parçası olarak, kulüp üyelerimize farklı bir kurum kültürünü ve Türkiye’nin önemli kamusal mekânlarından birini yakından tanıma imkânı sundu.</p>
+                <br>
+                <p>iCON olarak; teknik yetkinliğin yanında güçlü bir sosyal ve kültürel perspektife sahip, çevresini ve ülkesini daha yakından tanıyan gençlerin yetişmesine katkı sunmaya devam ediyoruz.</p>
+            </div>
+        </div>
+
+        <!-- ================= 3.2. KARADENİZ GEZİSİ DETAYI (BALLANDIRA BALLANDIRA) ================= -->
+        <div id="karadeniz-menu" class="menu-section">
+            <a onclick="showSection('events-menu')" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Etkinliklere Dön
+            </a>
+            
+            <div class="content-card">
+                <h3>Sisler Ülkesine Destansı Yolculuk: iCON Karadeniz Çıkarması!</h3>
+                <br>
+                <p>Klasik gezileri unutun; çünkü biz iCONuz, sıradanlığın olduğu yerde bizim işimiz olamaz! Hayalleri gökyüzüne, rotayı ise Türkiye’nin en vahşi ve büyüleyici coğrafyasına çevirdik. Kafaya koyduk; bulutların üzerine çıkacak, Karadeniz’in o eşsiz ruhunu ve efsanevi enerjisini sonuna kadar damarlarımızda hissedecektik!</p>
+                <br>
+                <p>Yola çıktığımız andan itibaren otobüsün içindeki o coşku, kampüsün enerjisini katbekat aştı. Karadeniz’in hırçın dalgalarını selamlaya selamlaya ardımızda bıraktığımız her kilometre, bizi unutulmaz bir maceraya bir adım daha yaklaştırdı. Fırtına Deresi’nin coşkun sesine karşı tulumun o can alıcı ritmi karıştı; yeşilin binbir tonu arasında adeta başka bir boyuta geçiş yaptık.</p>
+                <br>
+                <p>Gittiğimiz her yerde Karadeniz’in o efsanevi mutfağının hak ettiklerini yaşattık! Sabah sisinin içinde, kuymağın peyniri göklere çekilir çekilmez masadaki o iCON kardeşliği koptu. Akşamüzeri mangallardan yükselen o enfes kokular eşliğinde horonun dibine vurduk; ayaklarımızın altındaki yorgunluğu unutıp sabaha kadar kemençe sesleriyle yaylaları inlettiğimiz anlar, tarihe kazındı.</p>
+                <br>
+                <p>Ayder’in devasa şelalelerinin altında ıslanırken, Pokut’un sis denizinde bulutların üzerinde kahve içerken hepimizin aklında tek bir cümle vardı: <em>"İşte iCON olmak tam olarak bu!"</em> Zirveye tırmanmanın zorluğunu, ancak zirveden o muhteşem manzarayı kucakladığında anlarsın.</p>
+                <br>
+                <p>Bu gezi; sadece yeni yerler görmekten ibaret kalmadı. Horon halkasında el ele tutuşan, sisler arasında birbirine omuz veren iCON ekibi, aralarındaki bağı ferro-beton gibi sağlamlaştırdı. Projelerde nasıl tek bir yumruksak, eğlencede ve macerada da o okulun en gür sesli, en yıkılmaz takımı olduğumuzu bir kez daha tescilledik.</p>
+                <br>
+                <p style="text-align: center; color: #ff9f38; font-weight: bold; font-style: italic;">"Biz Karadeniz’e sadece gezmeye gitmedik; oranın altını üstüne getirip, unutulmaz anılarımızın arasına bir destan daha yazdık!"</p>
+            </div>
+        </div>
+        
+        <!-- ================= 3.3. UÇAK FABRİKASI ETKİNLİK DETAYI ================= -->
+        <div id="ucak-fabrikasi-menu" class="menu-section">
+            <a onclick="showSection('events-menu')" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Etkinliklere Dön
+            </a>
+            
+            <div class="content-card">
+                <h3>Eğitimden Üretime: Havacılığın Geleceğine Sahadan Bakış</h3>
+                <br>
+                <p>Geleceğin havacılık ve teknoloji profesyonellerini yetiştirme vizyonumuz doğrultusunda, öğrencilerimizi teorik eğitimin ötesine taşıyarak gerçek üretim ekosistemiyle buluşturduk.</p>
+                <br>
+                <p>Bu kapsamda gerçekleştirilen <strong>İmsan & Milsav</strong> tesis ziyaretiyle öğrencilerimiz, havacılık sektöründe kullanılan ileri üretim altyapılarını ve uçak parçası imalat süreçlerini yerinde inceleme fırsatı buldu.</p>
+                <br>
+                <p>Üretim sahasında gerçekleştirilen teknik incelemeler sırasında öğrencilerimiz; hassas imalat süreçlerinden üretim ekipmanlarına, teknik çalışma disiplininden endüstriyel üretim standartlarına kadar pek çok farklı başlıkta doğrudan gözlem yaparak sektörün gerçek çalışma ortamını yakından tanıdı.</p>
+                <br>
+                <p>Saha deneyimi, öğrencilerin sınıf ortamında edindikleri mühendislik ve teknik bilgileri gerçek endüstriyel uygulamalarla ilişkilendirmelerine olanak sağlarken; üretim süreçlerinin gerektirdiği hassasiyet, disiplin, kalite yaklaşımı ve teknik yetkinlik konularında da önemli bir perspektif kazandırdı.</p>
+                <br>
+                <p>Havacılık sektörü; yüksek hassasiyet, ileri mühendislik ve sürekli gelişim gerektiren dinamik bir ekosistemdir. Bu nedenle nitelikli insan kaynağının yetiştirilmesinde akademik bilginin yanı sıra sektörle erken yaşta kurulan güçlü bağların da büyük önem taşıdığına inanıyoruz.</p>
+                <br>
+                <p>Gerçek üretim ortamlarını öğrencilerimizin eğitim sürecinin bir parçası hâline getirerek, onları yalnızca mesleğe hazırlamakla kalmıyor; tasarlayan, üreten, sorgulayan ve geleceğin teknolojilerine yön verebilen bir neslin gelişimine katkı sunmayı hedefliyoruz.</p>
+                <br>
+                <p>Eğitim ile sanayiyi aynı zeminde buluşturan bu tür saha deneyimleriyle, havacılık ve ileri teknoloji ekosisteminin geleceğine katkı sağlayacak yetkinliklerin gelişimini desteklemeye devam ediyoruz.</p>
+                <br>
+                <p style="text-align: center; color: #ff9f38; font-weight: bold; font-style: italic;">"Geleceğin teknolojileri, bugünün eğitim ve üretim deneyimleriyle şekilleniyor."</p>
+            </div>
+        </div>
+
+        <!-- ================= 4. TOPLULUKLAR MENÜSÜ ================= -->
+        <div id="teams-menu" class="menu-section">
+            <a onclick="showSection('main-menu')" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Ana Menüye Dön
+            </a>
+
+            <a href="LINK_EKLE" class="link-card">
+                <div class="card-left">
+                    <div class="text-box"><span class="title">TARS Ekibi</span></div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <a href="LINK_EKLE" class="link-card">
+                <div class="card-left">
+                    <div class="text-box"><span class="title">VTOL Ekibi</span></div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <a href="LINK_EKLE" class="link-card">
+                <div class="card-left">
+                    <div class="text-box"><span class="title">E-Spor Ekibi</span></div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <a href="LINK_EKLE" class="link-card">
+                <div class="card-left">
+                    <div class="text-box"><span class="title">Danışman Ekibi</span></div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <a href="LINK_EKLE" class="link-card">
+                <div class="card-left">
+                    <div class="text-box"><span class="title">Sosyal Medya Ekibi</span></div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+
+            <a href="LINK_EKLE" class="link-card">
+                <div class="card-left">
+                    <div class="text-box"><span class="title">Organizasyon Ekibi</span></div>
+                </div>
+                <i class="fa-solid fa-arrow-right arrow"></i>
+            </a>
+        </div>
+
+        <!-- ================= 5. HAKKINDA MENÜSÜ ================= -->
+        <div id="about-menu" class="menu-section">
+            <a onclick="showSection('main-menu')" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i> Ana Menüye Dön
+            </a>
+            
+            <div class="content-card">
+                <h3>iCON Nedir?</h3>
+                <p>Sıradan bir öğrenci topluluğu mu? Kesinlikle hayır. iCON, Türk Hava Kurumu Üniversitesi'nin tartışmasız <strong>en büyük, en dinamik ve en prestijli</strong> oluşumudur. Biz sadece bir kulüp değil, üniversite hayatını baştan aşağı yeniden tanımlayan koca bir ekosistemiz.</p>
+                <br>
+                <p>Havacılık ve mühendislik denildiğinde okuldaki tüm zirveler bizim adımıza tescillidir. Proje kültürünü ve inovasyonu bir yaşam tarzı haline getirdik. Öyle ki, <strong>TEKNOFEST</strong> alanına adım attığınızda herkesin gözü iCON ekiplerinin üzerindedir. Kampüste veya yarışma alanlarında herkesin girmek için can attığı, dışarıdan imrenerek bakılan o "rüya takım" tam olarak biziz. Fikirleri gerçeğe, hayalleri doğrudan gökyüzüne taşırız.</p>
+                
+                <!-- METNİN ORTASINA EKLENEN LOGO -->
+                <img src="icon.jpg" alt="iCON Logo" style="width: 100%; max-width: 250px; display: block; margin: 25px auto; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.8);">[cite: 10]
+
+                <p>Fakat biz sadece atölyelere kapanıp projelerle boğuşan bir ekip asla değiliz. <strong>Eğlenmeyi, keşfetmeyi ve hayatın tadını çıkarmayı en iyi biz biliriz!</strong> Yıl boyunca dur durak bilmeden düzenlediğimiz efsanevi geziler, kampüsü ayağa kaldıran festivaller ve bitmek bilmeyen enerjimizle okulun sosyal nabzını biz tutarız. Karadeniz'in zirvelerinden Türkiye'nin en dev sanayi tesislerine kadar her yerde bizim ayak izimiz var.</p>
+                <br>
+                <p>Peki en büyük gücümüz ne? <strong>Eşsiz bir Network.</strong> iCON'a adım attığın an, sadece bir topluluğa dahil olmazsın; sektörün devleriyle aynı masaya oturacağın, gelecekteki iş ortaklarını bulacağın ve kariyerini roketleyeceğin devasa bir bağlantı ağının tam kalbine düşersin.</p>
+                <br>
+                <p>Bizde sınırlar yok, devasa vizyonlar var. O yüzden mottomuz net: <em>Same Students. Bigger Horizons.</em></p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Yeni Dinamik Menü Geçiş Scripti -->
+    <script>
+        function showSection(sectionId) {
+            const sections = ['main-menu', 'projects-menu', 'events-menu', 'tbmm-menu', 'karadeniz-menu', 'ucak-fabrikasi-menu', 'teams-menu', 'about-menu'];
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
