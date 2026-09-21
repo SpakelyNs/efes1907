@@ -14,11 +14,12 @@
         }
 
         body {
-            /* EFSANE ARKA PLAN GÖRSELİN */
-            background-image: url('Başlıksız.jpg');[cite: 9] 
+            /* MOBİL UYUMLU EFSANE ARKA PLAN */
+            background-image: url('Başlıksız.jpg'); 
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll; /* Mobilde kaymayı ve bozulmayı engeller */
             background-color: #0b101a; 
             color: #fff;
             min-height: 100vh;
@@ -280,7 +281,7 @@
                 <div class="card-left">
                     <div class="icon-box"><i class="fa-solid fa-circle-info"></i></div>
                     <div class="text-box">
-                        <span class="title">iCON Hakkında</span>
+                        <span class="title">iCON HAKKINDA</span>
                         <span class="subtitle">Vizyonumuz, değerlerimiz, hikayemiz.</span>
                     </div>
                 </div>
@@ -330,7 +331,6 @@
                 <i class="fa-solid fa-arrow-left"></i> Ana Menüye Dön
             </a>
 
-            <!-- TBMM Gezisi -->
             <a onclick="showSection('tbmm-menu')" class="link-card">
                 <div class="card-left">
                     <div class="text-box">
@@ -341,7 +341,6 @@
                 <i class="fa-solid fa-arrow-right arrow"></i>
             </a>
 
-            <!-- Karadeniz Gezisi -->
             <a onclick="showSection('karadeniz-menu')" class="link-card">
                 <div class="card-left">
                     <div class="text-box">
@@ -352,7 +351,6 @@
                 <i class="fa-solid fa-arrow-right arrow"></i>
             </a>
 
-            <!-- Uçak Fabrikası Gezisi -->
             <a onclick="showSection('ucak-fabrikasi-menu')" class="link-card">
                 <div class="card-left">
                     <div class="text-box">
@@ -387,7 +385,7 @@
             </div>
         </div>
 
-        <!-- ================= 3.2. KARADENİZ GEZİSİ DETAYI (BALLANDIRA BALLANDIRA) ================= -->
+        <!-- ================= 3.2. KARADENİZ GEZİSİ DETAYI ================= -->
         <div id="karadeniz-menu" class="menu-section">
             <a onclick="showSection('events-menu')" class="back-btn">
                 <i class="fa-solid fa-arrow-left"></i> Etkinliklere Dön
@@ -499,7 +497,7 @@
                 <p>Havacılık ve mühendislik denildiğinde okuldaki tüm zirveler bizim adımıza tescillidir. Proje kültürünü ve inovasyonu bir yaşam tarzı haline getirdik. Öyle ki, <strong>TEKNOFEST</strong> alanına adım attığınızda herkesin gözü iCON ekiplerinin üzerindedir. Kampüste veya yarışma alanlarında herkesin girmek için can attığı, dışarıdan imrenerek bakılan o "rüya takım" tam olarak biziz. Fikirleri gerçeğe, hayalleri doğrudan gökyüzüne taşırız.</p>
                 
                 <!-- METNİN ORTASINA EKLENEN LOGO -->
-                <img src="icon.jpg" alt="iCON Logo" style="width: 100%; max-width: 250px; display: block; margin: 25px auto; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.8);">[cite: 10]
+                <img src="icon.jpg" alt="iCON Logo" style="width: 100%; max-width: 250px; display: block; margin: 25px auto; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.8);">
 
                 <p>Fakat biz sadece atölyelere kapanıp projelerle boğuşan bir ekip asla değiliz. <strong>Eğlenmeyi, keşfetmeyi ve hayatın tadını çıkarmayı en iyi biz biliriz!</strong> Yıl boyunca dur durak bilmeden düzenlediğimiz efsanevi geziler, kampüsü ayağa kaldıran festivaller ve bitmek bilmeyen enerjimizle okulun sosyal nabzını biz tutarız. Karadeniz'in zirvelerinden Türkiye'nin en dev sanayi tesislerine kadar her yerde bizim ayak izimiz var.</p>
                 <br>
